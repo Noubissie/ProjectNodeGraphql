@@ -1,0 +1,26 @@
+{
+  "name": "nodejs_backend",
+  "version": "1.0.0",
+  "description": "reportCard backend service",
+  "main": "App.js",
+  "scripts": {
+    "build":"cd sms-ui && npm run build",
+    "install-client":"cd sms-ui && npm install",
+    "heroku-postbuild":"npm run install-client && npm run build",
+    "start":"node App.js",
+    "ui" : "cd sms-ui && npm start",
+    "test": "testReportCard"
+  },
+  "author": "Landry Placid",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^15.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "mysql": "^2.18.1",
+    "react-apollo": "^3.1.5"
+  }
+}
