@@ -4,14 +4,13 @@
   "description": "reportCard backend service",
   "main": "App.js",
   "scripts": {
-    "build":"cd sms-ui && npm run build",
-    "install-client":"cd sms-ui && npm install",
-    "heroku-postbuild":"npm run install-client && npm run build",
-    "start":"nodemon App.js",
-    "ui" : "cd sms-ui && npm start",
+    "build": "cd sms-ui && npm run build",
+    "install-client": "cd sms-ui && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "start": "nodemon App.js",
+    "ui": "cd sms-ui && npm start",
     "test": "testReportCard"
   },
-
   "author": "Landry Placid",
   "license": "ISC",
   "dependencies": {
@@ -22,6 +21,7 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
     "mysql": "^2.18.1",
+    "nodemon": "^2.0.4",
     "react-apollo": "^3.1.5"
   }
 }
