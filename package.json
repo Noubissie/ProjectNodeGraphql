@@ -7,7 +7,7 @@
     "build":"cd sms-ui && npm run build",
     "install-client":"cd sms-ui && npm install",
     "heroku-postbuild":"npm run install-client && npm run build",
-    "start":"node App.js",
+    "start":"nodemon App.js",
     "ui" : "cd sms-ui && npm start",
     "test": "testReportCard"
   },

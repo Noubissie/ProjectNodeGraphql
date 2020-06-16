@@ -27,7 +27,7 @@ app.use(express.urlencoded({extended:false}))
 Port = process.env.PORT || 5000
 
 if(process.env.NODE_ENV == "production"){
-    app.use(express.static("./sms-ui/build"))
+    app.use(express.static("sms-ui/build"))
 }
 
 // let corsFactors = (req, callback)=>{
