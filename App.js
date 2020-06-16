@@ -4,7 +4,7 @@ let cors = require('cors')
 let jwt = require("jsonwebtoken")
 let schema = require("./graphql/graphqlSchema")
 const GraphqlHTTP = require('express-graphql')
-
+const path = require("path")
 // let whiteList = ['http://192.168.43.137:3000', "http://localhost:3000"]
 
 let app = express()
@@ -17,17 +17,38 @@ let app = express()
 //     credentials: true, 
 //   }
 
-
-
-
 app.disable("etag").disable("x-powered-by")
 
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 Port = process.env.PORT || 5000
 
+app.use("/g",cors(), GraphqlHTTP({
+    schema,
+    graphiql:true,
+    pretty:true,
+    customFormatErrorFn:(error)=>{
+        console.log("server error message::",error.message)
+        console.log("Error Location::",error.locations)
+        console.log("Error Name::",error.name)
+        console.log("Error node::",error.nodes)
+        console.log("error origin::",error.originalError)
+        console.log("error source",error.source.body)
+        console.log("error path::",error.path)
+
+    },
+}))
+
+
+
+
+process.env.NODE_ENV = "production"
 if(process.env.NODE_ENV == "production"){
     app.use(express.static("sms-ui/build"))
+    app.get("*",(req,res)=>{
+        res.sendFile(path.resolve(__dirname,"sms-ui","build","index.html"))
+    })
+
 }
 
 // let corsFactors = (req, callback)=>{
@@ -70,21 +91,21 @@ if(process.env.NODE_ENV == "production"){
 // }
 
 // app.use("/g",cors(corsFactors), logger, logheader, GraphqlHTTP({
-    app.use("/g",cors(), GraphqlHTTP({
-    schema,
-    graphiql:true,
-    pretty:true,
-    customFormatErrorFn:(error)=>{
-        console.log("server error message::",error.message)
-        console.log("Error Location::",error.locations)
-        console.log("Error Name::",error.name)
-        console.log("Error node::",error.nodes)
-        console.log("error origin::",error.originalError)
-        console.log("error source",error.source.body)
-        console.log("error path::",error.path)
+//     app.use("/g",cors(), GraphqlHTTP({
+//     schema,
+//     graphiql:true,
+//     pretty:true,
+//     customFormatErrorFn:(error)=>{
+//         console.log("server error message::",error.message)
+//         console.log("Error Location::",error.locations)
+//         console.log("Error Name::",error.name)
+//         console.log("Error node::",error.nodes)
+//         console.log("error origin::",error.originalError)
+//         console.log("error source",error.source.body)
+//         console.log("error path::",error.path)
 
-    },
-}))
+//     },
+// }))
 
 app.listen(Port,() => {
     console.log(`you are connected on Port:${Port}`)
