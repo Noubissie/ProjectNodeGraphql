@@ -55,33 +55,33 @@ let Navigation = (props)=>{
         
         
 
-        useEffect(()=>{
+        // useEffect(()=>{
             
-            let timer = setInterval(()=>{
-                    fetch("/online")
-                    .then((res)=>{
-                        return res.json()
-                    })
-                    .then((data)=>{
-                        setState({
-                            wifi:"online",
-                            wifiColor:"green",
-                            battery: battery() ,
-                        })
-                    })
-                    .catch((err)=>{
-                        setState({
-                            wifi:"offline",
-                            wifiColor: "white",
-                            battery:battery() ,
-                        })
-                        // console.log("err::",err)
-                    })
+        //     let timer = setInterval(()=>{
+        //             fetch("/online")
+        //             .then((res)=>{
+        //                 return res.json()
+        //             })
+        //             .then((data)=>{
+        //                 setState({
+        //                     wifi:"online",
+        //                     wifiColor:"green",
+        //                     battery: battery() ,
+        //                 })
+        //             })
+        //             .catch((err)=>{
+        //                 setState({
+        //                     wifi:"offline",
+        //                     wifiColor: "white",
+        //                     battery:battery() ,
+        //                 })
+        //                 // console.log("err::",err)
+        //             })
                 
                 
-            },100)
+        //     },100)
             
-        },[])
+        // },[])
         return(
             <nav  className={styles.navigationContainer} >
               
