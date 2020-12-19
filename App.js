@@ -37,7 +37,7 @@ app.use("/g",cors(), GraphqlHTTP({
         console.log("error path::",error.path)
 
     },
-}))
+})) 
 
 
 
